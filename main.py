@@ -67,5 +67,5 @@ env = Environment(
 
 template = env.get_template('template.html')
 rendered = template.render(collection=collection)
-with open("flashcards/templates/rendered.html", "w") as fh:
+with open("data/target.html", "w") as fh:
     fh.write(rendered)

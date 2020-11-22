@@ -2,16 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-
     <title>Flashcards</title>
-    <meta name="description" content="Flashcards">
-    <meta name="author" content="Alexander Hildebrandt">
+    <style>
+        @page {
+            size: 21cm 29.7cm;
+            margin: 0 0 0 0;
+        }
 
-    <link rel="stylesheet" href="style.css">
+        td {
+            border: 1px solid black;
+            width: 33%;
+        }
+
+        tr {
+            height: 9em;
+        }
+
+        table {
+            width: 100%;
+            height: 50rem;
+            page-break-after: always;
+        }
+
+        .kanji {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .backside {
+            font-size: 1rem;
+        }
+
+        .backside td {
+            vertical-align: top;
+            padding-left: 1rem;
+            padding-top: 1rem;
+        }
+
+        .vocabulary {
+            font-size: 0.75rem;
+        }
+    </style>
 </head>
 
 <body>
-
 {% for chunk in collection %}
     <table class="kanji">
         {% for front_row in chunk['front_rows'] %}
@@ -35,15 +69,11 @@
                                 {{ vocabulary }}<br/>
                             {% endfor %}
                         </div>
-                        {#                        {% for back_element in back_cell %}#}
-                        {#                            {{ back_element|safe }}<br/>#}
-                        {#                        {% endfor %}#}
                     </td>
                 {% endfor %}
             </tr>
         {% endfor %}
     </table>
 {% endfor %}
-
 </body>
 </html>
