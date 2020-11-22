@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Flashcards</title>
+    <meta name="description" content="Flashcards">
+    <meta name="author" content="Alexander Hildebrandt">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+{% for chunk in collection %}
+    <table class="kanji">
+        {% for front_row in chunk['front_rows'] %}
+            <tr>
+                {% for front_cell in front_row %}
+                    <td>{{ front_cell }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    <table class="backside">
+        {% for back_row in chunk['back_rows'] %}
+            <tr>
+                {% for back_cell in back_row %}
+                    <td>
+                        {{ back_cell['on'] }}<br/>
+                        {{ back_cell['kun'] }}<br/>
+                        {{ back_cell['meaning'] }}<br/>
+                        <div class="vocabulary">
+                            {% for vocabulary in back_cell['vocabulary'] %}
+                                {{ vocabulary }}<br/>
+                            {% endfor %}
+                        </div>
+                        {#                        {% for back_element in back_cell %}#}
+                        {#                            {{ back_element|safe }}<br/>#}
+                        {#                        {% endfor %}#}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endfor %}
+
+</body>
+</html>

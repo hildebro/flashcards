@@ -1,0 +1,38 @@
+@page {
+    size: 21cm 29.7cm;
+    margin: 0 0 0 0;
+}
+
+td {
+    border: 1px solid black;
+    width: 33%;
+}
+
+tr {
+    height: 9em;
+}
+
+table {
+    width: 100%;
+    height: 50rem;
+    page-break-after: always;
+}
+
+.kanji {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.backside {
+    font-size: 1rem;
+}
+
+.backside td {
+    vertical-align: top;
+    padding-left: 1rem;
+    padding-top: 1rem;
+}
+
+.vocabulary {
+    font-size: 0.75rem;
+}

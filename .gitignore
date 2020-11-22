@@ -1,0 +1,5 @@
+.idea
+.venv
+data
+flashcards.egg-info
+flashcards/__pycache__
