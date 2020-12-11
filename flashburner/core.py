@@ -66,7 +66,7 @@ def build_flashcards(flashcard_data):
         collection.append(chunk)
 
     env = Environment(
-        loader=PackageLoader('flashcards', 'templates'),
+        loader=PackageLoader('flashburner', 'templates'),
         autoescape=select_autoescape(['html'])
     )
 

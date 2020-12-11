@@ -1,6 +1,4 @@
 .idea
 .venv
 data
-dist
-flashcards.egg-info
-flashcards/__pycache__
+tests/target.html
