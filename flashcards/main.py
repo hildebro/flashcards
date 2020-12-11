@@ -1,9 +1,7 @@
 from jinja2 import Environment, PackageLoader, select_autoescape
-import csv
 
-with open('data/semester_1_clean.csv', newline='') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=';')
 
+def build_flashcards(flashcard_data):
     # this hold the full flashcard data.
     collection = []
     # this hold the data of one double-sided page.
@@ -14,7 +12,7 @@ with open('data/semester_1_clean.csv', newline='') as csv_file:
     # these two hold data for one row of a double-sided page.
     front_cells = []
     back_cells = []
-    for row in csv_reader:
+    for row in flashcard_data:
         # data is gathered from the csv.
         front_cells.append(row[0])
         back_cells.append(
@@ -22,7 +20,7 @@ with open('data/semester_1_clean.csv', newline='') as csv_file:
                 'on': row[1],
                 'kun': row[2],
                 'meaning': row[3],
-                'vocabulary': row[4].split('|')
+                'vocabulary': row[4].split('\n')
             }
         )
 
@@ -67,12 +65,10 @@ with open('data/semester_1_clean.csv', newline='') as csv_file:
             chunk['back_rows'].append([[], [], []])
         collection.append(chunk)
 
-env = Environment(
-    loader=PackageLoader('flashcards', 'templates'),
-    autoescape=select_autoescape(['html'])
-)
+    env = Environment(
+        loader=PackageLoader('flashcards', 'templates'),
+        autoescape=select_autoescape(['html'])
+    )
 
-template = env.get_template('template.html')
-rendered = template.render(collection=collection)
-with open("data/target.html", "w") as fh:
-    fh.write(rendered)
+    template = env.get_template('template.html')
+    return template.render(collection=collection)
