@@ -1,5 +1,6 @@
 .idea
 .venv
 data
+dist
 flashcards.egg-info
 flashcards/__pycache__
